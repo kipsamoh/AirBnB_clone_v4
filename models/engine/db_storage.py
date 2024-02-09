@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-_Contains the class DBStorage
+Contains the class DBStorage
 """
 
 import models
@@ -21,7 +21,7 @@ classes = {"Amenity": Amenity, "City": City,
 
 
 class DBStorage:
-    """_interaacts with the MySQL database"""
+    """interaacts with the MySQL database"""
     __engine = None
     __session = None
 
@@ -41,7 +41,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """_query on the current database session"""
+        """query on the current database session"""
         new_dict = {}
         for clss in classes:
             if cls is None or cls is classes[clss] or cls is clss:
@@ -56,16 +56,16 @@ class DBStorage:
         self.__session.add(obj)
 
     def save(self):
-        """_commit all changes of the current database session"""
+        """commit all changes of the current database session"""
         self.__session.commit()
 
     def delete(self, obj=None):
-        """_delete from the current database session obj if not None"""
+        """delete from the current database session obj if not None"""
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
-        """_reloads data from the database"""
+        """reloads data from the database"""
         Base.metadata.create_all(self.__engine)
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
@@ -77,22 +77,30 @@ class DBStorage:
 
     def get(self, cls, id):
         """
-        Returns the object based on the class name and its ID, or None if not
-        found
+        Returns the object based on the class name and its ID, or
+        None if not found
         """
-        objects = self.__session.query(classes[cls])
-        for obj in objects:
-            if obj.id == id:
-                return obj
+        if cls not in classes.values():
+            return None
+
+        all_cls = models.storage.all(cls)
+        for value in all_cls.values():
+            if (value.id == id):
+                return value
+
         return None
 
     def count(self, cls=None):
         """
-        Returns the number of objects in storage maching the given class name.
-        If no name is passed, returns the count of a_ll objects in storage.
+        count the number of objects in storage
         """
-        no_bjects = 0
-        for clss in classes:
-            if cls is None or cls is classes[clss] or cls is clss:
-                no_bjects += len(self.__session.query(classes[clss]).all())
-        return no_bjects
+        all_class = classes.values()
+
+        if not cls:
+            count = 0
+            for clas in all_class:
+                count += len(models.storage.all(clas).values())
+        else:
+            count = len(models.storage.all(cls).values())
+
+        return count

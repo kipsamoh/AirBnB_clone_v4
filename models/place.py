@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-""" _holds class Place"""
+#!/usr/bin/python
+""" holds class Place"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -33,9 +33,11 @@ class Place(BaseModel, Base):
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
-        reviews = relationship("Review", backref="place")
-        amenities = relationship("Amenity", secondary="place_amenity",
-                                 backref="place_amenities",
+        reviews = relationship("Review",
+                               backref="place",
+                               cascade="all, delete, delete-orphan")
+        amenities = relationship("Amenity",
+                                 secondary=place_amenity,
                                  viewonly=False)
     else:
         city_id = ""
@@ -51,7 +53,7 @@ class Place(BaseModel, Base):
         amenity_ids = []
 
     def __init__(self, *args, **kwargs):
-        """_initializes Place"""
+        """initializes Place"""
         super().__init__(*args, **kwargs)
 
     if models.storage_t != 'db':

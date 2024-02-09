@@ -1,16 +1,17 @@
 #!/usr/bin/python3
-""" _holds class User"""
+""" holds class User"""
+
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-import hashlib
+from hashlib import md5
 
 
 class User(BaseModel, Base):
-    """_Representation of a user """
+    """Representation of a user """
     if models.storage_t == 'db':
         __tablename__ = 'users'
         email = Column(String(128), nullable=False)
@@ -26,10 +27,11 @@ class User(BaseModel, Base):
         last_name = ""
 
     def __init__(self, *args, **kwargs):
-        """_initializes user"""
-        if 'password' in kwargs:
-            password = kwargs['password']
-            m = hashlib.md5()
-            m.update(str.encode(password))
-            kwargs['password'] = m.hexdigest()
+        """initializes user"""
         super().__init__(*args, **kwargs)
+
+    def __setattr__(self, name, value):
+        """sets a password with md5 encryption"""
+        if name == "password":
+            value = md5(value.encode()).hexdigest()
+        super().__setattr__(name, value)
