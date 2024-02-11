@@ -29,7 +29,7 @@ FLUSH PRIVILEGES;
 USE hbnb_dev_db;
 
 --
--- Table structure for table `amenities`
+-- Table struct_ure for table `amenities`
 --
 
 DROP TABLE IF EXISTS `amenities`;
@@ -55,7 +55,7 @@ INSERT INTO `amenities` VALUES ('017ec502-e84a-4a0f-92d6-d97e27bb6bdf','2017-03-
 UNLOCK TABLES;
 
 --
--- Table structure for table `cities`
+-- Table struct_ure for table `cities`
 --
 
 DROP TABLE IF EXISTS `cities`;
@@ -74,7 +74,7 @@ CREATE TABLE `cities` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cities`
+-- Dum_ing data for table `cities`
 --
 
 LOCK TABLES `cities` WRITE;
@@ -84,7 +84,7 @@ INSERT INTO `cities` VALUES ('05b0b99c-f10e-4e3a-88d1-b3187d6998ee','2017-03-25 
 UNLOCK TABLES;
 
 --
--- Table structure for table `place_amenity`
+-- Table str_ucture for table `place_amenity`
 --
 
 DROP TABLE IF EXISTS `place_amenity`;
@@ -101,7 +101,7 @@ CREATE TABLE `place_amenity` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `place_amenity`
+-- Dumping data for tab_le `place_amenity`
 --
 
 LOCK TABLES `place_amenity` WRITE;
@@ -140,7 +140,7 @@ CREATE TABLE `places` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `places`
+-- Dumping dat_a for table `places`
 --
 
 LOCK TABLES `places` WRITE;
@@ -150,7 +150,7 @@ INSERT INTO `places` VALUES ('02d9a2b5-7dca-423f-8406-707bc76abf7e','2017-03-25 
 UNLOCK TABLES;
 
 --
--- Table structure for table `reviews`
+-- Table str_cture for table `reviews`
 --
 
 DROP TABLE IF EXISTS `reviews`;
@@ -172,7 +172,7 @@ CREATE TABLE `reviews` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `reviews`
+-- Dump_ing data for ta_ble `reviews`
 --
 
 LOCK TABLES `reviews` WRITE;
@@ -182,7 +182,7 @@ INSERT INTO `reviews` VALUES ('01a2c67a-b39d-4940-b910-a1cc3289557d','2017-03-25
 UNLOCK TABLES;
 
 --
--- Table structure for table `states`
+-- Table str_ucture for table `states`
 --
 
 DROP TABLE IF EXISTS `states`;
@@ -208,7 +208,6 @@ INSERT INTO `states` VALUES ('0e391e25-dd3a-45f4-bce3-4d1dea83f3c7','2017-03-25 
 UNLOCK TABLES;
 
 --
--- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -227,7 +226,6 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
 --
 
 LOCK TABLES `users` WRITE;
@@ -244,5 +242,3 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2017-03-25 18:45:25
