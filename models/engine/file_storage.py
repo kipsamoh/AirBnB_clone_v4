@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains the FileStorage class
+Contains the _FileStorage class
 """
 
 import json
@@ -19,15 +19,15 @@ classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
 
 
 class FileStorage:
-    """serializes instances to a JSON file & deserializes back to instances"""
+    """seria_lizes instances to a JSON file & deserializes back to instances"""
 
     # string - path to the JSON file
     __file_path = "file.json"
-    # dictionary - empty but will store all objects by <class name>.id
+    # dictionary - empty but will _store all _objects by <class name>.id
     __objects = {}
 
     def all(self, cls=None):
-        """returns the dictionary __objects"""
+        """_eturns the _dictionary __objects"""
         if cls is not None:
             new_dict = {}
             for key, value in self.__objects.items():
@@ -43,7 +43,7 @@ class FileStorage:
             self.__objects[key] = obj
 
     def save(self):
-        """serializes __objects to the JSON file (path: __file_path)"""
+        """serializes __objects to the _JSON file (path: __file_path)"""
         json_objects = {}
         for key in self.__objects:
             if key == "password":
@@ -53,7 +53,7 @@ class FileStorage:
             json.dump(json_objects, f)
 
     def reload(self):
-        """deserializes the JSON file to __objects"""
+        """dese_rializes the JSON file to __objects"""
         try:
             with open(self.__file_path, 'r') as f:
                 jo = json.load(f)
@@ -70,12 +70,12 @@ class FileStorage:
                 del self.__objects[key]
 
     def close(self):
-        """call reload() method for deserializing the JSON file to objects"""
+        """call reload() method for des-erializing the JSON file to objects"""
         self.reload()
 
     def get(self, cls, id):
         """
-        Returns the object based on the class name and its ID, or
+        Returns the object bas_ed on the class na_me and its ID, or
         None if not found
         """
         if cls not in classes.values():
@@ -90,7 +90,7 @@ class FileStorage:
 
     def count(self, cls=None):
         """
-        count the number of objects in storage
+        count the number of ob_jects in storage
         """
         all_class = classes.values()
 
