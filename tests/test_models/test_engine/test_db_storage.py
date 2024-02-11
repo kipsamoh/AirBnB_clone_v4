@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains the TestDBStorageDocs and TestDBStorage classes
+Contains the Test_DBStorage_Docs and Test_DB_Storage classes
 """
 
 from datetime import datetime
@@ -25,7 +25,7 @@ classes = {"Amenity": Amenity, "City": City, "Place": Place,
 
 
 class TestDBStorageDocs(unittest.TestCase):
-    """Tests to check the documentation and style of DBStorage class"""
+    """Tests to check the _documentation and style of DBStorage class"""
     @classmethod
     def setUpClass(cls):
         """Set up for the doc tests"""
@@ -61,7 +61,7 @@ test_db_storage.py'])
                         "DBStorage class needs a docstring")
 
     def test_dbs_func_docstrings(self):
-        """Test for the presence of docstrings in DBStorage methods"""
+        """Test for the presence of docstrings in IDBStorage methods"""
         for func in self.dbs_f:
             self.assertIsNot(func[1].__doc__, None,
                              "{:s} method needs a docstring".format(func[0]))
@@ -82,15 +82,15 @@ class TestFileStorage(unittest.TestCase):
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_new(self):
-        """test that new adds an object to the database"""
+        """_test that new adds an object to the database"""
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
-        """Test that save properly saves objects to file.json"""
+        """_est that save properly saves objects to file.json"""
 
     def test_get_db(self):
-        """ Tests method for obtaining an instance db storage"""
-        dic = {"name": "Cundinamarca"}
+        """ Tests _method for obtaining an instance db storage"""
+        dic = {"name": "_Cundinamarca"}
         instance = State(**dic)
         storage.new(instance)
         storage.save()
@@ -98,11 +98,11 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(get_instance, instance)
 
     def test_count(self):
-        """ Tests count method db storage """
-        dic = {"name": "Vecindad"}
+        """ Tests count _method db storage """
+        dic = {"name": "_Vecindad"}
         state = State(**dic)
         storage.new(state)
-        dic = {"name": "Mexico", "state_id": state.id}
+        dic = {"name": "_Mexico", "state_id": state.id}
         city = City(**dic)
         storage.new(city)
         storage.save()
