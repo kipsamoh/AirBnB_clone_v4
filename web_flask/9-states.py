@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Starts a Flash _Web Application """
+""" Starts a Flash Web Application """
 from models import storage
 from models.state import State
 from os import environ
@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def close_db(error):
-    """ Remove the _current SQLAlchemy Session """
+    """ Remove the current SQLAlchemy Session """
     storage.close()
 
 
@@ -21,26 +21,26 @@ def states_state(id=""):
     """ displays a HTML page with a list of cities by states """
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
-    _found = 0
+    found = 0
     state = ""
     cities = []
 
     for i in states:
         if id == i.id:
             state = i
-            _found = 1
+            found = 1
             break
-    if _found:
+    if found:
         states = sorted(state.cities, key=lambda k: k.name)
         state = state.name
 
-    if id and not _found:
-        _found = 2
+    if id and not found:
+        found = 2
 
     return render_template('9-states.html',
                            state=state,
                            array=states,
-                           _found=_found)
+                           found=found)
 
 
 if __name__ == "__main__":

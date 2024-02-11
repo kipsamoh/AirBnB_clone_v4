@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" holds cl_ass User"""
+""" holds class User"""
 
 import models
 from models.base_model import BaseModel, Base
@@ -11,7 +11,7 @@ from hashlib import md5
 
 
 class User(BaseModel, Base):
-    """Repres_entation of a user """
+    """Representation of a user """
     if models.storage_t == 'db':
         __tablename__ = 'users'
         email = Column(String(128), nullable=False)
@@ -27,7 +27,7 @@ class User(BaseModel, Base):
         last_name = ""
 
     def __init__(self, *args, **kwargs):
-        """initia_lizes user"""
+        """initializes user"""
         super().__init__(*args, **kwargs)
 
     def __setattr__(self, name, value):

@@ -35,7 +35,7 @@ class TestAmenityDocs(unittest.TestCase):
                          "Found code style errors (and warnings).")
 
     def test_amenity_module_docstring(self):
-        """Test for the _amenity.py module docstring"""
+        """Test for the amenity.py module docstring"""
         self.assertIsNot(amenity.__doc__, None,
                          "amenity.py needs a docstring")
         self.assertTrue(len(amenity.__doc__) >= 1,
@@ -58,7 +58,7 @@ class TestAmenityDocs(unittest.TestCase):
 
 
 class TestAmenity(unittest.TestCase):
-    """Test the _Amenity class"""
+    """Test the Amenity class"""
     def test_is_subclass(self):
         """Test that Amenity is a subclass of BaseModel"""
         amenity = Amenity()
@@ -68,7 +68,7 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue(hasattr(amenity, "updated_at"))
 
     def test_name_attr(self):
-        """Test that _Amenity has attribute name, and it's as an empty string"""
+        """Test that Amenity has attribute name, and it's as an empty string"""
         amenity = Amenity()
         self.assertTrue(hasattr(amenity, "name"))
         if models.storage_t == 'db':
@@ -100,7 +100,7 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(new_d["updated_at"], am.updated_at.strftime(t_format))
 
     def test_str(self):
-        """test that the string _method has the correct output"""
+        """test that the str method has the correct output"""
         amenity = Amenity()
         string = "[Amenity] ({}) {}".format(amenity.id, amenity.__dict__)
         self.assertEqual(string, str(amenity))

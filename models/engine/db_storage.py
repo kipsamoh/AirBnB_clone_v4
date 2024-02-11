@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains the class DBS_torage
+Contains the class DBStorage
 """
 
 import models
@@ -56,28 +56,28 @@ class DBStorage:
         self.__session.add(obj)
 
     def save(self):
-        """commit all changes of the cu_rrent database session"""
+        """commit all changes of the current database session"""
         self.__session.commit()
 
     def delete(self, obj=None):
-        """delete from the current data_base session obj if not None"""
+        """delete from the current database session obj if not None"""
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
-        """reloads da_ta from the database"""
+        """reloads data from the database"""
         Base.metadata.create_all(self.__engine)
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session
 
     def close(self):
-        """call remove() method on the pri_ate session attribute"""
+        """call remove() method on the private session attribute"""
         self.__session.remove()
 
     def get(self, cls, id):
         """
-        Returns the object based on the cl_ass name and its ID, or
+        Returns the object based on the class name and its ID, or
         None if not found
         """
         if cls not in classes.values():
@@ -92,7 +92,7 @@ class DBStorage:
 
     def count(self, cls=None):
         """
-        count the number of obj_ects in storage
+        count the number of objects in storage
         """
         all_class = classes.values()
 

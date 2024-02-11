@@ -1,5 +1,5 @@
 #!/usr/bin/python
-""" hol_ds class City"""
+""" holds class City"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -22,5 +22,5 @@ class City(BaseModel, Base):
         name = ""
 
     def __init__(self, *args, **kwargs):
-        """init_ializes city"""
+        """initializes city"""
         super().__init__(*args, **kwargs)
