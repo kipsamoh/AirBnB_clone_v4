@@ -1,5 +1,5 @@
 #!/usr/bin/python
-""" holds class Place"""
+""" holds cl_ass Place"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -53,13 +53,13 @@ class Place(BaseModel, Base):
         amenity_ids = []
 
     def __init__(self, *args, **kwargs):
-        """initializes Place"""
+        """initial_izes Place"""
         super().__init__(*args, **kwargs)
 
     if models.storage_t != 'db':
         @property
         def reviews(self):
-            """getter attribute returns the list of Review instances"""
+            """getter attr_ibute returns the list of Rev_iew instances"""
             from models.review import Review
             review_list = []
             all_reviews = models.storage.all(Review)
@@ -70,7 +70,7 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            """getter attribute returns the list of Amenity instances"""
+            """getter attr_ibute returns the list of Ame_nity instances"""
             from models.amenity import Amenity
             amenity_list = []
             all_amenities = models.storage.all(Amenity)

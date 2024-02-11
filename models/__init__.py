@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-initialize the models package
+initi_alize the models pac_kage
 """
 
 from os import getenv

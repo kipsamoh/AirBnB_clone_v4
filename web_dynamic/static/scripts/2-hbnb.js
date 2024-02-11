@@ -1,29 +1,21 @@
-$(document).ready(init);
-
-const HOST = '0.0.0.0';
-
-function init () {
-  const amenityObj = {};
-  $('.amenities .popover input').change(function () {
-    if ($(this).is(':checked')) {
-      amenityObj[$(this).attr('data-name')] = $(this).attr('data-id');
-    } else if ($(this).is(':not(:checked)')) {
-      delete amenityObj[$(this).attr('data-name')];
-    }
-    const names = Object.keys(amenityObj);
-    $('.amenities h4').text(names.sort().join(', '));
-  });
-
-  apiStatus();
-}
-
-function apiStatus () {
-  const API_URL = `http://${HOST}:5001/api/v1/status/`;
-  $.get(API_URL, (data, textStatus) => {
-    if (textStatus === 'success' && data.status === 'OK') {
-      $('#api_status').addClass('available');
+$('document').ready(() => {
+  $.get('http://localhost:5001/api/v1/status/', (data) => {
+    if (data.status === 'OK') {
+      $('DIV#api_status').addClass('available');
     } else {
-      $('#api_status').removeClass('available');
+      $('DIV#api_status').removeClass('available');
     }
   });
-}
+
+  const amenities = {};
+
+  $('div.amenities li input').change(function () {
+    if ($(this).is(':checked')) {
+      amenities[($(this).attr('data-id'))] = $(this).attr('data-name');
+    } else {
+      delete amenities[($(this).attr('data-id'))];
+    }
+    $('div.amenities h4').text(Object.values(amenities).join(', '));
+  });
+});
+

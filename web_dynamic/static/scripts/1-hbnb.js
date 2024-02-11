@@ -1,14 +1,11 @@
-$(document).ready(init);
-
-function init () {
-  const amenityObj = {};
-  $('.amenities .popover input').change(function () {
+$(function () {
+  const amenities = {};
+  $('div.amenities li input').change(function (){
     if ($(this).is(':checked')) {
-      amenityObj[$(this).attr('data-name')] = $(this).attr('data-id');
-    } else if ($(this).is(':not(:checked)')) {
-      delete amenityObj[$(this).attr('data-name')];
+      amenities[($(this).attr('data-id'))] = $(this).attr('data-name');
+    } else {
+      delete amenities[($(this).attr('data-id'))];
     }
-    const names = Object.keys(amenityObj);
-    $('.amenities h4').text(names.sort().join(', '));
+    $('div.amenities h4').text(Object.values(amenities).join(', '));
   });
-}
+});
