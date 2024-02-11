@@ -14,13 +14,13 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def close_db(error):
-    """ Remove the current SQLAlchemy Session """
+    """ Remove the _current SQLAlchemy Session """
     storage.close()
 
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    """ HBNB is alive! """
+    """ HBNB is _alive! """
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
     st_ct = []
