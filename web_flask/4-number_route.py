@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" -Starts a Flash Web _Application Python is _Cool"""
+""" _Starts a Flash Web _Application Python is _Cool"""
 from flask import Flask
 app = Flask(__name__)
 
@@ -12,7 +12,7 @@ def hello_hbnb():
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    """ _Prints a Message when /hbnb is called """
+    """ _Prints a Mess_age when /hbnb is called """
     return 'HBNB'
 
 
@@ -31,7 +31,7 @@ def python_is_cool(text='is_cool'):
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def is_n_number(n):
-    """ Prints a Mes_sage when /number is called only if n is an int"""
+    """ Prints a Mes_sage when number is cal-led only if n is an int"""
     return "{:d} is a number".format(n)
 
 if __name__ == "__main__":
